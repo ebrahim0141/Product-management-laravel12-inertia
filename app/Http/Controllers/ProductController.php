@@ -20,9 +20,6 @@ class ProductController extends Controller
 
     function ProductSavePage(Request $request)
     {
-        // $product_id=$request->query('id');
-        // $user_id=$request->header('id');
-        // $list=Product::where('id',$product_id)->where('user_id',$user_id)->first();
         $user_id=$request->header('id');
         $product_id=$request->input('id');
         $category_list= Category::where('user_id',$user_id)->get();
@@ -56,10 +53,6 @@ class ProductController extends Controller
         $data =['message'=>'Create Successful','status'=>true,'error'=>''];
         return  redirect()->route('ProductPage')->with($data);
 
-        // return response()->json([
-        //     'message' => 'Product created successfully', 
-        //     'product' => $product->load('categories')
-        // ], 201);
     }
 
     function ProductByID(Request $request)
@@ -96,11 +89,7 @@ class ProductController extends Controller
 
         $data =['message'=>'Update Successful','status'=>true,'error'=>''];
         return  redirect()->route('ProductPage')->with($data);
-
-        // return response()->json([
-        //     'message' => 'Product updated successfully', 
-        //     'product' => $product->load('categories')
-        // ]);     
+    
     }
 
     function DeleteProduct(Request $request)
@@ -121,15 +110,5 @@ class ProductController extends Controller
             return  redirect()->route('ProductPage')->with($data);
         }
 
-        // $user_id=$request->header('id');
-        // $product_id=$request->input('id');
-        // $product = Product::where('id',$product_id)
-        //     ->where('user_id',$user_id)
-        //     ->firstOrFail();
-
-        // $product->categories()->detach();
-        // $product->delete();
-
-        // return response()->json(['message' => 'Product deleted successfully']);
     }
 }

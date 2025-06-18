@@ -1,7 +1,6 @@
 <template>
   <div class="w-full">
     <div class="max-w-7xl mx-auto bg-white rounded-md shadow p-6">
-      <!-- Search and Button Wrapper -->
       <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <input
           v-model="searchValue"
@@ -74,7 +73,7 @@ const Header = [
 
 const Item = ref(page.props.list);
 const searchValue = ref("");
-const searchField = "name"; // if searchable only by name
+const searchField = "name"; 
 
 if (page.props.flash?.status === true) {
   toaster.success(page.props.flash.message);

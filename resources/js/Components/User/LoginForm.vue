@@ -75,7 +75,7 @@ function submit() {
 </script>
 
 <style>
-/* Optional: simple fadeIn animation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;

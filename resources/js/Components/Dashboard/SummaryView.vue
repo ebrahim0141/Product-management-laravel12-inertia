@@ -15,7 +15,6 @@ function formatLabel(key) {
 <template>
   <div class="w-full px-4 py-6">
     <div class="flex flex-wrap -mx-2">
-      <!-- Dynamic Card Component -->
       <div
         v-for="(value, key) in page.props.list"
         :key="key"
