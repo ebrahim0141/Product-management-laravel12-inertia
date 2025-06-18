@@ -8,7 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Middleware\SessionAuthenticate;
 use Illuminate\Support\Facades\Route;
 
-
+// test route 
+Route::get('/test', [HomeController::class, 'test'])->name('test');
 // Laravel Vue Page Routing For User
 Route::get('/', [HomeController::class, 'HomePage'])->name('HomePage');
 Route::get('/LoginPage', [UserController::class, 'LoginPage'])->name('LoginPage');

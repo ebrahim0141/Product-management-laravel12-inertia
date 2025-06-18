@@ -7,8 +7,14 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    function HomePage()
+    public function HomePage()
     {
         return Inertia::render('HomePage');
+    }
+
+    public function test()
+    {
+        // return response()->json('hello');
+        return Inertia::render('Home');
     }
 }

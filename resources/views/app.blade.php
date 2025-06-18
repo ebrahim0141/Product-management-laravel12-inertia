@@ -7,6 +7,7 @@
     <!--For Development Env--->
     @vite('resources/js/app.js')
     @inertiaHead
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     @inertia
