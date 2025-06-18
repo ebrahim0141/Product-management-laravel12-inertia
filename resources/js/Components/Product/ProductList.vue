@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-4 py-6">
+  <div class="w-full">
     <div class="max-w-7xl mx-auto bg-white rounded-md shadow p-6">
       <!-- Search and Button Wrapper -->
       <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
