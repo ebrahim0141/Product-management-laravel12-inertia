@@ -1,172 +1,43 @@
-
-
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3'
+
 const page = usePage()
+
+function formatLabel(key) {
+  const map = {
+    product: 'Product',
+    category: 'Category'
+  }
+  return map[key] || key
+}
 </script>
 
 <template>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{page.props.list['product']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Product</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="w-full px-4 py-6">
+    <div class="flex flex-wrap -mx-2">
+      <!-- Dynamic Card Component -->
+      <div
+        v-for="(value, key) in page.props.list"
+        :key="key"
+        class="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4"
+      >
+        <div class="bg-white shadow-md rounded-lg h-full p-4 transition-all duration-300 hover:shadow-lg">
+          <div class="flex justify-between items-center">
+            <div>
+              <h5 class="text-lg font-semibold capitalize">
+                <span v-if="['total', 'vat', 'payable'].includes(key)">$</span>
+                {{ value }}
+              </h5>
+              <p class="text-sm text-gray-500 capitalize">
+                {{ formatLabel(key) }}
+              </p>
             </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{page.props.list['category']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Category</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow">
+              <img alt="" class="w-6 h-6" src="../../Assets/img/icon.svg" />
             </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{page.props.list['customer']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Customer</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        <span id="product">{{page.props.list['invoice']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Invoice</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100 bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span id="product">{{page.props.list['total']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Total Sale</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span id="product">{{page.props.list['vat']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Vat Collection</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 animated fadeIn p-2">
-                <div class="card card-plain h-100  bg-white">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-9 col-lg-8 col-md-8 col-sm-9">
-                                <div>
-                                    <h5 class="mb-0 text-capitalize font-weight-bold">
-                                        $ <span>{{page.props.list['payable']}}</span>
-                                    </h5>
-                                    <p class="mb-0 text-sm">Total Collection</p>
-                                </div>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
-                                <div class="icon icon-shape bg-success shadow-sm float-end rounded-3">
-                                    <img alt="" class="w-100 " src="../../Assets/img/icon.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
-
